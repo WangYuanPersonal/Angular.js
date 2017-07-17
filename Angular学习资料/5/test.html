@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../org/angular.min.js"></script>
+
+</head>
+
+<body ng-app="app" ng-controller="ctrl">
+    {{dogs.dog1}}<br>
+    {{dogs.dog1.color}}<br>
+    {{dogs.dog1.price}}<br>
+    {{dogs.dog1.num}}
+    <button ng-click="dogs.add()">增加</button>
+    {{dogs.dog1.num*dogs.dog1.price}}
+</body>
+<script>
+    var app=angular.module("app",[])
+    app.controller("ctrl",["$scope",function($scope){
+        $scope.dogs={
+            dog1:{color:"red",price:100,num:0},
+            add:function(){
+                $scope.dogs.dog1.num=Math.min(++$scope.dogs.dog1.num,6)
+            }
+        }
+    }])
+</script>
+
+</html>
